@@ -1,24 +1,33 @@
 package com.example.project_practico_16
 
-import android.view.View
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.project_practico_16.databinding.ItemBinding
 
 class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
-
+    var paises = mutableListOf<Pais>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Adapter.ViewHolder {
-        TODO("Not yet implemented")
+        var binding = ItemBinding.inflate(LayoutInflater.from(parent.context))
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: Adapter.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val item = paises[position]
+        holder.bind(item)
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return paises.size
     }
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    fun setData(listaPaises: List<Pais>){
+        this.paises = listaPaises.toMutableList()
+    }
+    class ViewHolder(val binding: ItemBinding): RecyclerView.ViewHolder(binding.root) {
+        fun bind(itemPais: Pais) {
+            binding.textViewPais.text = itemPais.nombre
+        }
 
     }
 }

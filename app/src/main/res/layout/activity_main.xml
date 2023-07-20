@@ -5,7 +5,7 @@
     android:id="@+id/constraintLayoutActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#93A603"
+    android:background="@drawable/img"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="Poblacion"
+            android:textColor="#000000"
             android:textSize="34sp" />
     </androidx.cardview.widget.CardView>
 
@@ -34,6 +35,7 @@
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

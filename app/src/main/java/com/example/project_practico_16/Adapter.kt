@@ -11,6 +11,8 @@ import com.example.project_practico_16.databinding.ItemBinding
 
 class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
     var paises = mutableListOf<Pais>()
+    var callBack: PaisCallBack? = null
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Adapter.ViewHolder {
         var binding = ItemBinding.inflate(LayoutInflater.from(parent.context))
@@ -29,17 +31,24 @@ class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
     fun setData(listaPaises: List<Pais>){
         this.paises = listaPaises.toMutableList()
     }
-    class ViewHolder(val binding: ItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    fun setPaisCallBack(c: PaisCallBack){
+        this.callBack = c
+    }
+   inner class ViewHolder(val binding: ItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(itemPais: Pais) {
             val texto = "${itemPais.nombre} tiene una poblacion de ${itemPais.poblacion} habitantes."
             binding.textViewPais.text = itemPais.nombre
             binding.imageViewPais.load(itemPais.imgUrl)
             binding.cardViewItem.setOnClickListener(View.OnClickListener {
-                Toast.makeText(itemView.context, texto, Toast.LENGTH_LONG).show()
+                callBack?.showCountry(texto)
             })
 
         }
 
     }
 
+}
+
+interface PaisCallBack{
+    fun showCountry(s: String)
 }

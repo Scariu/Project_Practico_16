@@ -3,6 +3,7 @@ package com.example.project_practico_16
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.project_practico_16.databinding.ItemBinding
 
 class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
@@ -27,6 +28,7 @@ class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
     class ViewHolder(val binding: ItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(itemPais: Pais) {
             binding.textViewPais.text = itemPais.nombre
+            binding.imageViewPais.load(itemPais.imgUrl)
         }
 
     }

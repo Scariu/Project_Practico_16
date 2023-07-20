@@ -36,7 +36,7 @@ class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
     }
    inner class ViewHolder(val binding: ItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(itemPais: Pais) {
-            val texto = "${itemPais.nombre} tiene una poblacion de ${itemPais.poblacion} habitantes."
+            val texto = "${itemPais.nombre} tiene una población de ${itemPais.poblacion} habitantes."
             binding.textViewPais.text = itemPais.nombre
             binding.imageViewPais.load(itemPais.imgUrl)
             binding.cardViewItem.setOnClickListener(View.OnClickListener {
